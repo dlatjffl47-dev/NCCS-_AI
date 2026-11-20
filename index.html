@@ -12,10 +12,46 @@
         --muted: #748078;
         --paper: #fffefa;
         --line: #e8e7df;
+        --page-color: #f5f2eb;
+        --wash-one: #e8eddb;
+        --wash-two: #f3e7d8;
+        --field: #fff;
+        --soft: #f0f3eb;
+        --soft-hover: #e3ebdc;
+        --counter-bg: #edf3e9;
+        --result-bg: #fafbf7;
+        --result-border: #d8ddcf;
+        --result-item-border: #e8ecdf;
+        --reset-bg: #f1f0eb;
+        --reset-hover: #e9e7df;
+        --card-shadow: 0 16px 45px rgba(48, 54, 43, .06);
         --green: #245c43;
-        --green-dark: #194733;
-        --lime: #d7ed9b;
-        --orange: #e98455;
+        --button-green: #245c43;
+        --button-hover: #194733;
+      }
+
+      :root[data-theme="dark"] {
+        color-scheme: dark;
+        --ink: #e8eee8;
+        --muted: #a4b0a7;
+        --paper: #202923;
+        --line: #3a463d;
+        --page-color: #171d19;
+        --wash-one: #26352b;
+        --wash-two: #332820;
+        --field: #19211c;
+        --soft: #2c382f;
+        --soft-hover: #3a4b3d;
+        --counter-bg: #2c3c30;
+        --result-bg: #1b241e;
+        --result-border: #3c4a3e;
+        --result-item-border: #364238;
+        --reset-bg: #303832;
+        --reset-hover: #3b463e;
+        --card-shadow: 0 16px 45px rgba(0, 0, 0, .18);
+        --green: #a5d6ac;
+        --button-green: #38764d;
+        --button-hover: #44885a;
       }
 
       * { box-sizing: border-box; }
@@ -26,9 +62,9 @@
         padding: 48px 20px;
         color: var(--ink);
         background:
-          radial-gradient(ellipse at 9% 12%, #e8eddb 0, transparent 30%),
-          radial-gradient(ellipse at 94% 88%, #f3e7d8 0, transparent 27%),
-          #f5f2eb;
+          radial-gradient(ellipse at 9% 12%, var(--wash-one) 0, transparent 30%),
+          radial-gradient(ellipse at 94% 88%, var(--wash-two) 0, transparent 27%),
+          var(--page-color);
         font-family: Pretendard, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
       }
 
@@ -40,12 +76,25 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        gap: 12px;
         margin-bottom: 27px;
         color: var(--muted);
         font-size: 13px;
         font-weight: 700;
         letter-spacing: .04em;
       }
+      .topline-tools { display: flex; align-items: center; gap: 15px; }
+      .theme-toggle {
+        padding: 9px 13px;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        color: var(--ink);
+        background: var(--paper);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0;
+      }
+      .theme-toggle:hover { border-color: var(--muted); }
       .brand { display: flex; align-items: center; gap: 9px; color: var(--green); }
       .brand-mark {
         display: grid;
@@ -71,10 +120,10 @@
       .layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(310px, .9fr); gap: 18px; }
       .card {
         padding: 27px;
-        border: 1px solid rgba(32, 43, 37, .07);
+        border: 1px solid var(--line);
         border-radius: 22px;
         background: var(--paper);
-        box-shadow: 0 16px 45px rgba(48, 54, 43, .06);
+        box-shadow: var(--card-shadow);
       }
       .section-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
       h2 { margin: 0; font-size: 18px; letter-spacing: -.03em; }
@@ -82,7 +131,7 @@
         padding: 6px 10px;
         border-radius: 20px;
         color: var(--green);
-        background: #edf3e9;
+        background: var(--counter-bg);
         font-size: 12px;
         font-weight: 700;
         white-space: nowrap;
@@ -99,7 +148,7 @@
         border-radius: 13px;
         outline: none;
         color: var(--ink);
-        background: #fff;
+        background: var(--field);
         line-height: 1.8;
         transition: border-color .2s, box-shadow .2s;
       }
@@ -120,10 +169,10 @@
         border: 0;
         border-radius: 8px;
         color: var(--green);
-        background: #f0f3eb;
+        background: var(--soft);
         font-size: 19px;
       }
-      .stepper button:hover { background: #e3ebdc; }
+      .stepper button:hover { background: var(--soft-hover); }
       #drawCount { width: 28px; border: 0; outline: 0; text-align: center; font-weight: 800; }
       .actions { display: grid; grid-template-columns: 1fr auto; gap: 10px; margin-top: 25px; }
       .draw-button, .reset-button {
@@ -133,11 +182,11 @@
         font-weight: 800;
         transition: transform .15s, background .15s;
       }
-      .draw-button { color: white; background: var(--green); }
-      .draw-button:hover { transform: translateY(-1px); background: var(--green-dark); }
+      .draw-button { color: white; background: var(--button-green); }
+      .draw-button:hover { transform: translateY(-1px); background: var(--button-hover); }
       .draw-button:disabled { cursor: not-allowed; opacity: .48; transform: none; }
-      .reset-button { padding: 0 17px; color: #657068; background: #f1f0eb; }
-      .reset-button:hover { background: #e9e7df; }
+      .reset-button { padding: 0 17px; color: var(--muted); background: var(--reset-bg); }
+      .reset-button:hover { background: var(--reset-hover); }
 
       .result-card { display: flex; min-height: 100%; flex-direction: column; }
       .result-heading { margin-bottom: 20px; }
@@ -149,9 +198,9 @@
         align-content: center;
         justify-items: center;
         padding: 24px;
-        border: 1px dashed #d8ddcf;
+        border: 1px dashed var(--result-border);
         border-radius: 16px;
-        background: #fafbf7;
+        background: var(--result-bg);
         text-align: center;
       }
       .empty-icon { margin-bottom: 14px; font-size: 34px; }
@@ -163,9 +212,9 @@
         align-items: center;
         gap: 13px;
         padding: 15px;
-        border: 1px solid #e8ecdf;
+        border: 1px solid var(--result-item-border);
         border-radius: 13px;
-        background: white;
+        background: var(--field);
         text-align: left;
         animation: appear .35s both;
       }
@@ -180,14 +229,14 @@
         place-items: center;
         border-radius: 11px;
         color: var(--green);
-        background: #edf3e9;
+        background: var(--counter-bg);
         font-size: 12px;
         font-weight: 800;
       }
       .winner { font-size: 17px; font-weight: 800; }
       .result-footer { display: flex; justify-content: space-between; gap: 12px; margin-top: 17px; color: var(--muted); font-size: 12px; }
       .status { min-height: 20px; margin: 12px 0 0; color: #b64e36; font-size: 12px; }
-      .footer { margin-top: 24px; color: #8b9188; font-size: 11px; text-align: center; }
+      .footer { margin-top: 24px; color: var(--muted); font-size: 11px; text-align: center; }
 
       @keyframes appear {
         from { opacity: 0; transform: translateY(8px); }
@@ -199,6 +248,10 @@
         .card { padding: 22px; }
         .result-area { min-height: 260px; }
       }
+      @media (max-width: 430px) {
+        .topline-tools > span { display: none; }
+        .theme-toggle { padding: 8px 10px; }
+      }
       @media (prefers-reduced-motion: reduce) {
         *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
       }
@@ -208,7 +261,10 @@
     <main class="page">
       <header class="topline">
         <div class="brand"><span class="brand-mark" aria-hidden="true">✳</span> 모여봐요, 제비뽑기</div>
-        <span>FAIR &amp; SIMPLE</span>
+        <div class="topline-tools">
+          <span>FAIR &amp; SIMPLE</span>
+          <button type="button" class="theme-toggle" id="themeToggle" aria-label="다크 모드로 전환" aria-pressed="false">🌙 다크 모드</button>
+        </div>
       </header>
 
       <section class="hero" aria-labelledby="page-title">
@@ -268,6 +324,17 @@
       const status = document.querySelector("#status");
       const resultArea = document.querySelector("#resultArea");
       const resultSummary = document.querySelector("#resultSummary");
+      const themeToggle = document.querySelector("#themeToggle");
+      const themeColor = document.querySelector('meta[name="theme-color"]');
+
+      themeToggle.addEventListener("click", () => {
+        const isDark = document.documentElement.dataset.theme !== "dark";
+        document.documentElement.dataset.theme = isDark ? "dark" : "light";
+        themeToggle.textContent = isDark ? "☀️ 화이트 모드" : "🌙 다크 모드";
+        themeToggle.setAttribute("aria-label", isDark ? "화이트 모드로 전환" : "다크 모드로 전환");
+        themeToggle.setAttribute("aria-pressed", String(isDark));
+        themeColor.content = isDark ? "#171d19" : "#f5f2eb";
+      });
 
       function getParticipants() {
         return participantsInput.value.split(/\r?\n/).map((name) => name.trim()).filter(Boolean);
